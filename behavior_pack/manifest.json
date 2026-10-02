@@ -1,0 +1,38 @@
+{
+	"format_version": 2,
+	"header": {
+		"name": "实体死亡掉落物动量 Entity Die Loot Momentum",
+		"description": "实体死亡掉落物动量 Entity Die Loot Momentum，简称 E-D-L-M(?)\n可以让实体死亡时的掉落物散开",
+		"uuid": "1f2ee62b-2b94-4225-8408-f6c7584285ed",
+		"version": [2, 0, 0],
+		"min_engine_version": [1, 21, 100]
+	},
+	"metadata": {
+		"authors": ["bzhandeajun(?)"],
+		"generated_with": {
+			"blockbench_item_wizard": ["1.2.1"]
+		}
+	},
+	"modules": [
+		{
+			"description": "Behavior",
+			"version": [1, 0, 0],
+			"uuid": "868a2f68-df6e-4c5f-a7eb-6c11cc186143",
+			"type": "data"
+		},
+		{
+      "description": "Script",
+      "version": [1, 0, 0],
+      "uuid": "c9304086-8992-4a2b-8052-b3bbcd440928",
+      "type": "script",
+      "language": "javascript",
+      "entry": "scripts/loot_momentum.js"
+    }
+	],
+	"dependencies": [
+    {
+      "module_name": "@minecraft/server",
+      "version": "2.0.0"
+     }
+	]
+}
