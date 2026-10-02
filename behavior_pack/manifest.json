@@ -4,7 +4,7 @@
 		"name": "实体死亡掉落物动量 Entity Die Loot Momentum",
 		"description": "实体死亡掉落物动量 Entity Die Loot Momentum，简称 E-D-L-M(?)\n可以让实体死亡时的掉落物散开",
 		"uuid": "1f2ee62b-2b94-4225-8408-f6c7584285ed",
-		"version": [2, 0, 0],
+		"version": [1, 0, 1],
 		"min_engine_version": [1, 21, 100]
 	},
 	"metadata": {
