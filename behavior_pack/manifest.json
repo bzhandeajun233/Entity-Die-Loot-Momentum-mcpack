@@ -16,13 +16,13 @@
 	"modules": [
 		{
 			"description": "Behavior",
-			"version": [1, 0, 0],
+			"version": [1, 0, 1],
 			"uuid": "868a2f68-df6e-4c5f-a7eb-6c11cc186143",
 			"type": "data"
 		},
 		{
       "description": "Script",
-      "version": [1, 0, 0],
+      "version": [1, 0, 1],
       "uuid": "c9304086-8992-4a2b-8052-b3bbcd440928",
       "type": "script",
       "language": "javascript",
