@@ -35,6 +35,8 @@ world.afterEvents.entityDie.subscribe((event) => {
       // 遍历获取到的掉落物，从 items 里依次取出为 item
       for (const item of items) {
 
+        let Multiplier = 1; // 默认倍率是1
+
         // 获取记分板
         // 备份 bz_loot_existence_time ，不用管为什么现在名字是 动量 而不是 时间
         const objective = world.scoreboard.getObjective("bz_loot_momentum");
@@ -45,6 +47,22 @@ world.afterEvents.entityDie.subscribe((event) => {
           // 如果分数大于2就跳过这个
           if (objective.getScore(item) > 2) continue;
           // continue; 是跳过当前循环，return; 是停止当前所有循环
+          
+/*          //如果掉落物动量有分数
+          if (objective.getScore("掉落物动量")) {
+            // 获取 掉落物变量 的分数并设置为乘数
+            Multiplier = objective.getScore("掉落物动量");
+          }*/
+          
+          //可以用记分板分数修改动量的乘数了！虽然只能设置为整数……
+          // 获取"掉落物动量"的分数
+          const virtualScore = objective.getScore("掉落物动量");
+          // 如果分数存在
+          if (virtualScore !== undefined) {
+            // 获取"掉落物动量"的分数并设置为乘数
+            Multiplier = virtualScore;
+          }
+          
         }
 
 
@@ -83,13 +101,16 @@ world.afterEvents.entityDie.subscribe((event) => {
         // 随机到的小数再乘数组长度，如果随机数是 0.3，如果长度是 3，那么就是 0.3×3=0.9，去除小数(向下取整)后就是 0，对应的是数组里第一个数字 speeds[0]
         // 如果随机数是 0.75，如果长度是 8，那么就是 0.75×8=6，去除小数(向下取整)后还是 6 (本来就是整数去除后当然也还是整数嘛)，也就是speeds[6]，对应是是数组里8个数里的第7个数字，至于为什么是7而不是6，是因为数组里0对应的是数字里的第一个数字，那么6+1就是7，话说这里为什么要+1啊？因为1-1=0，0是第一个，所以想知道第几个数就要+1啊，话说为什么数组里想知道是第几个数就要+1，第几个数在数组又要-1，这是因为……呃，我也不知道……总之就是要+1和-1就是了，比如mc原版的物品栏里，/replaceitem之类的指令，第1格在指令里是要用0，最后一个也就是第9格，指令里要用8之类的
         // js 里不能像 molang 那样直接 Math.random(0.08,0.12,0.16) (悲
-        const speed = speeds[Math.floor(Math.random() * speeds.length)];
+//        const speed = speeds[Math.floor(Math.random() * speeds.length)];
+        // 加了一个 Multiplier，可以让速度乘记分板的分数了
+        const speed = speeds[Math.floor(Math.random() * speeds.length)] * Multiplier;
 
         // 随机向上弹起
         const ys = [0.15, 0.175, 0.2, 0.225, 0.25]; // 可以在这里修改掉落物弹射的高度
 
         // 跟 speed 的几乎一样，所以没什么详细的注释了
-        const y = ys[Math.floor(Math.random() * ys.length)];
+//        const y = ys[Math.floor(Math.random() * ys.length)];
+        const y = ys[Math.floor(Math.random() * ys.length)] * Multiplier;
 
         //设置动量的速度
         const vel = {
