@@ -12,6 +12,8 @@ ps: 原版好像只有 minecraft:loot 组件掉落出来的物品不会有速度
 
 虽然可能会乱飞，掉到莫名其妙的地方里，不好捡之类的，不过至少比原版直接硬在原地不动好多了吧(?)
 
+还可以用 /scoreboard players set "掉落物动量" bz_loot_momentum <整数> 来修改掉落物飞散出去的倍率，虽然只能输入整数……
+
 # 版本要求
 
 Minecraft Bedrock Edition 1.21.100 及以上
